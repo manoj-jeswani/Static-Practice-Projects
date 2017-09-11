@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 input </title>
+    <script type='text/javascript'>
+ 
+ function getOffset(obj) {
+  var offsetLeft = 0;
+  var offsetTop = 0;
+  do {
+    if (!isNaN(obj.offsetLeft)) {
+      offsetLeft += obj.offsetLeft;
+    }
+    if (!isNaN(obj.offsetTop)) {
+      offsetTop += obj.offsetTop;
+    }   
+  } while(obj = obj.offsetParent );
+  return {left: offsetLeft, top: offsetTop};
+}   
+ 
+var lf;
+var tp;
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX;
+var canvas;
+var ctx;
+
+    function init() {
+      canvas = document.getElementById("mycanvas");
+      canvas.addEventListener("touchstart", draw, false);
+ 		var obj=getOffset(canvas);
+ 		 lf=obj.left;
+ 		 tp=obj.top;
+      paddleX = (canvas.width-paddleWidth)/2;				
+ 				drawPaddle();
+    	canvas.addEventListener("touchmove", draw, false);	
+    	
+    }
+        function drawPaddle() 
+        { 
+          if(canvas.getContext) 
+            {
+                       ctx = canvas.getContext("2d");  
+                
+                    ctx.beginPath();
+                    ctx.rect(paddleX , canvas.height-paddleHeight, paddleWidth, paddleHeight);
+                    ctx.fillStyle = "orange";
+                    ctx.fill();
+                    ctx.closePath();
+            }
+        }
+
+
+    function draw() {
+  if(canvas.getContext) {
+         ctx = canvas.getContext("2d");  
+              ctx.clearRect(0,0,canvas.width,canvas.height);
+  
+           paddleX = event.touches[0].pageX-lf-paddleWidth/2;
+         
+          drawPaddle();
+      }
+           event.preventDefault();
+   
+    }
+    </script>
+  
+  </head>
+  <body onload="init()">
+   <canvas id="mycanvas" width="800" height="520" style="border: 1px solid #ccc ; margin-top:50px; margin-left:20px">
+    Canvas element not supported<br />
+  </canvas></body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>
+			Jquery Tuts2
+		</title>
+	
+		<script type="text/javascript" src="/media/mj/Local Disk/coded files/jqajjs/jquery-3.2.1.min.js">
+
+		//use $ or word Jquery to begin with the jquery statement
+		
+
+		</script>
+
+		<style type="text/css">
+				.big{
+
+					font-size : 20px;
+				}	
+				.small{
+
+					font-size : 8px;
+				}	
+				#fil
+				{
+
+					color:green;
+				}
+
+		</style>
+
+
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+				$(function()
+				{
+
+					//		$(".big").hide();
+
+					$(".small").css("color","blue");
+
+					$(".small").css("font-size","40px");
+	
+					//changing styling of components at run time using jquery  .css(property,value)
+
+				});
+
+						
+		</script>	
+<!-- using fxn in jquery and placing all commands in that fxn :: is the method by which we can place script block any where in our html document and it will get execute only when the whole document has been completely loaded , so all components made so it is possible to exert effect on them
+ -->
+
+
+
+
+			<button class="big">Button 1 </button>
+			<button class="small">Button 2 </button>
+			<button class="small">Button 4 </button>
+			<button class="small">Button 5 </button>
+			<button id = "fil" class="big">Button 6 </button>
+			<button id = "fil" class="big">Button 3 </button>
+			
+	</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+	<title>AJAX OVERVIEW</title>
+</head>
+<body>
+<button>Go ajax go</button>
+<br>
+<div id="container"></div>
+<script type="text/javascript">
+	
+$("button").click(function(){
+/*
+get method of ajax is used 
+path of file is supplied (here is:sample.html) and data argument conatins the data present on the specified path and we put all this data in the container div
+*/
+$.get("sample.html",function(data){
+	$("#container").html(data);
+
+})
+
+
+});
+
+
+</script>
+</body>
+</html>

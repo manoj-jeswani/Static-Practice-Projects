@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>
+			Jquery Tuts2
+		</title>
+	
+		<script type="text/javascript" src="/media/mj/Local Disk/coded files/jqajjs/jquery-3.2.1.min.js">
+
+		//use $ or word Jquery to begin with the jquery statement
+		
+
+		</script>
+
+		<style type="text/css">
+				.big{
+
+					font-size : 20px;
+				}	
+				.small{
+
+					font-size : 8px;
+				}	
+				#sp
+				{
+
+					color:violet;
+				}
+
+				#fil
+				{
+
+					color:green;
+				}
+
+		</style>
+
+
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+				$(function()
+				{
+
+					$(".small").css("color","blue");
+					$("#sp").css("font-size","30px");
+								
+					//using jquery events , heres click event , pass in the function to perform task when click on the pointed object is done	
+					$("#sp").click(function()
+					{
+						
+					//	$("button").hide();						
+					
+						//above statement points to tag button ,  so all componenets having tag button will get hidden on click event done on component with id sp
+
+					// but to not to hide sp component and rest all components shud get disappear do as following using not selector:
+							$("button:not(#sp)").hide();
+
+							//this points to the current object (i.e object pointed to by the jquery presently) , here its the component with id sp (can be seen at palce where .click is used)	
+							$(this).css("color","red");
+							$(this).css("font-size","10px");
+
+
+
+
+					});
+
+
+
+				});
+
+						
+		</script>	
+
+
+
+			<button id ="sp" class="big">Button 1 </button>
+			<button class="small">Button 2 </button>
+			<button class="small">Button 4 </button>
+			<button class="small">Button 5 </button>
+			<button id = "fil" class="big">Button 6 </button>
+			<button id = "fil" class="big">Button 3 </button>
+			
+	</body>
+
+</html>

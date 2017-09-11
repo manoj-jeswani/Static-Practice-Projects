@@ -1,0 +1,170 @@
+body
+{
+
+margin:0;
+padding:0;
+font-family: arial,sans-serif;
+
+}
+
+#header
+{
+
+width:100%;
+height:56px;
+background-color:black;
+
+}
+#menu{
+	width:1024px;
+	margin:0px auto;
+	color:white;
+
+
+}
+h2{
+	margin:0px;
+}
+#wrapper
+{
+	width:1024px;
+	min-height:500px;
+	margin:0px auto;
+}
+
+
+#portfolio{
+	list-style-type:none;
+	padding-left:0px;
+
+}
+
+#portfolio li{
+
+display:inline-block;
+margin :10px,5px,10px,5px;
+
+}
+
+
+
+
+#portfolio li img{
+width:240px; 
+height:200px; 
+
+
+}
+
+#frame{
+display:none;
+
+position:fixed;
+background-color:white;
+left:50%;
+width:700px;
+height:500px;
+margin-left:-350px;
+padding-top:20px;
+padding-bottom:20px;
+margin-top:15px;
+
+}
+
+#fimage{
+width:660px;
+margin-left:20px;
+height:500px;
+
+}
+
+
+#overlay{
+display:none;
+
+/*default overlay is set INACTIVE
+*/
+width:100%;
+height:100%;
+position:fixed;
+background-color:black;
+opacity:0.7;
+
+}
+
+/*
+hover is used to detect if mouse is moved over the selected compnents
+*/
+#portfolio li img:hover{
+	cursor:pointer;
+}
+
+/*if mouse is moved over any thumbnail image , opened frame image or overlay while frame is opened,... it turns to hand
+*/
+
+#overlay:hover{
+	cursor:pointer;	
+}
+
+
+#fimage:hover{
+	cursor:pointer;
+}
+
+#frame-table{
+
+position:absolute;
+width:660px;
+margin-left:20px;
+
+}
+
+#rightarrow{
+	float:right;
+
+}
+
+#rightarrow  ,#leftarrow {
+
+position:relative;
+width:5%;
+top:250px;
+opacity:0.3	5;
+
+}
+
+#rightarrow img{
+margin-left:3px;
+
+width:100%;
+}
+#leftarrow img{
+margin-left:-3px;
+
+width:100%;
+
+}
+#description{
+	background-color:white;
+	padding-bottom:10px;
+}
+
+#description p{
+	margin-left:20px;
+}
+
+#filter li{
+
+	display: inline;
+
+}
+/*below one gets applied to all those li elements of filter which have class active added to them
+*/
+#filter li.active{
+	text-decoration: underline;
+}
+
+/*
+Jesus, table are just for tables in 2013...and also you make a big mistake when you load a big picture and make a resize with css. Read about "Mobile First". For this gallery you can use like this: 
+<a href="big-img.jpg"><img src="small-img.jpg" alt="img"/></a>
+and replace attr from link to img src when user click...﻿*/

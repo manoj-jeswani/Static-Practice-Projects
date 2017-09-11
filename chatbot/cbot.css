@@ -1,0 +1,74 @@
+
+				body{
+					font-family:arial,sans-serif;
+					margin:0;
+					background-color:#f2f2f2;
+				}
+				#header{
+					width:100%;
+					height:60px;
+					background-color:#333;
+					box-shadow: 0px 4px 2px #333;
+
+
+				}
+				#header>h1{
+					padding:11;
+					width:500px;
+					margin:0px auto;
+					color:white;
+					
+				}
+				#container{
+					width:1024px;
+					/*min-height:500px;
+					*/
+					height:500px;	
+					/*fixed height
+					*//*
+				
+					if height is not kept fixed and scroll option is also not included then on container being filled with meassages would expand downwards and wud push all components below it downwards
+
+					*/
+					margin:0px auto;
+					margin-top:11px;
+					background-color:white;
+					border:1px solid #333;
+					overflow:scroll;
+				}
+							
+				#controls{
+					width:1024px;
+					
+					margin:0px auto;
+				}
+				textarea{
+					border:1px solid blue;
+			
+					margin-top:4px;
+					resize:none; /*so that user cant change size of textarea*/
+					width:948px;	
+					height:50px;	
+						
+				} 
+				#send{
+					position:absolute;
+					font-size:24px;
+					margin-top:10px;
+					margin-left:4px;
+				}
+				.uname
+				{
+
+					font-weight: bold;
+					color:blue;
+				}
+				.bot
+				{
+
+					font-weight: bold;
+					color:brown;
+				}
+				
+					
+					

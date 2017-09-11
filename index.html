@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>
+			Jquery Tuts
+		</title>
+	
+		<script type="text/javascript" src="/media/mj/Local Disk/coded files/jqajjs/jquery-3.2.1.min.js">
+
+		//use $ or word Jquery to begin with the jquery statement
+		
+
+		</script>
+
+		<style type="text/css">
+				.big{
+
+					font-size : 20px;
+				}	
+				.small{
+
+					font-size : 8px;
+				}	
+				#fil
+				{
+
+					color:green;
+				}
+
+		</style>
+
+
+	</head>
+	<body>
+
+
+			<button class="big">Button 1 </button>
+			<button class="small">Button 2 </button>
+			<button class="small">Button 4 </button>
+			<button class="small">Button 5 </button>
+			<button id = "fil" class="big">Button 6 </button>
+			<button id = "fil" class="big">Button 3 </button>
+			
+		<script type="text/javascript">
+
+		//use $ or word Jquery to begin with the jquery statement
+						$(".big").hide();
+						jQuery(".small").hide();
+					
+						//. indicates that referring to  all those components which have specified class 
+
+		</script>	
+
+<!-- 
+since browser executes html code sequentially so if we put this script block above somewhere in body then it will not cause any effect bcoz when it gets exected at that time no component like buttons has been created or assigned any id or class
+thats y we have to put the script block below the components code (on which we wanna exert effect of our jquery)
+
+ -->
+
+
+	</body>
+
+</html>

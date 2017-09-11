@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Touch Tracing </title>
+    <script type='text/javascript'>
+      var canvas;
+      var ctx;
+      var lastPt=null;
+ var lf;
+var tp;
+function getOffset(obj) {
+  var offsetLeft = 0;
+  var offsetTop = 0;
+  do {
+    if (!isNaN(obj.offsetLeft)) {
+      offsetLeft += obj.offsetLeft;
+    }
+    if (!isNaN(obj.offsetTop)) {
+      offsetTop += obj.offsetTop;
+    }   
+  } while(obj = obj.offsetParent );
+  return {left: offsetLeft, top: offsetTop};
+}   
+
+
+      function init() {
+        var touchzone = document.getElementById("mycanvas");
+        touchzone.addEventListener("touchmove", draw, false);
+        touchzone.addEventListener("touchend", end, false);
+        ctx = touchzone.getContext("2d");
+        var obj=getOffset(touchzone);
+        lf=obj.left;
+        tp=obj.top;
+      }
+ 
+      function draw(e) {
+        e.preventDefault();
+        if(lastPt!=null) {
+          ctx.beginPath();
+          ctx.moveTo(lastPt.x, lastPt.y);
+          ctx.lineTo(e.touches[0].pageX-lf, e.touches[0].pageY-tp);
+          ctx.stroke();
+        }
+        lastPt = {x:e.touches[0].pageX-lf, y:e.touches[0].pageY-tp};
+      }
+ 
+      function end(e) {
+        e.preventDefault();
+        // Terminate touch path
+        lastPt=null;
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <canvas id="mycanvas" width="500" height="500" style="border: 1px solid #ccc ; margin-top:200px; margin-left:120px">
+      Canvas element not supported.
+    </canvas>
+  </body>
+</html>

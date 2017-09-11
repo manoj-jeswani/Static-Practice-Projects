@@ -1,0 +1,213 @@
+<!-- from T-12
+ -->
+
+<html>
+	<head>
+		<title>
+			Jquery Chat Bot
+		</title>
+	
+		<script type="text/javascript" src="/media/mj/Local Disk/coded files/jqajjs/jquery-3.2.1.min.js">
+
+		</script>
+
+		<style type="text/css">
+				body{
+					font-family:arial,sans-serif;
+					margin:0;
+					background-color:#f2f2f2;
+				}
+				#header{
+					width:100%;
+					height:60px;
+					background-color:#333;
+					box-shadow: 0px 4px 2px #333;
+
+
+				}
+				#header>h1{
+					padding:11;
+					width:500px;
+					margin:0px auto;
+					color:white;
+					
+				}
+				#container{
+					width:1024px;
+					/*min-height:500px;
+					*/
+					height:500px;	
+					/*fixed height
+					*//*
+				
+					if height is not kept fixed and scroll option is also not included then on container being filled with meassages would expand downwards and wud push all components below it downwards
+
+					*/
+					margin:0px auto;
+					margin-top:11px;
+					background-color:white;
+					border:1px solid #333;
+					overflow:scroll;
+				}
+							
+				#controls{
+					width:1024px;
+					
+					margin:0px auto;
+				}
+				textarea{
+					border:1px solid blue;
+			
+					margin-top:4px;
+					resize:none; /*so that user cant change size of textarea*/
+					width:948px;	
+					height:50px;	
+						
+				} 
+				#send{
+					position:absolute;
+					font-size:24px;
+					margin-top:10px;
+					margin-left:4px;
+				}
+				.uname
+				{
+
+					font-weight: bold;
+					color:blue;
+				}
+				.bot
+				{
+
+					font-weight: bold;
+					color:brown;
+				}
+				
+					
+							
+
+		</style>
+
+
+	</head>
+	<body>
+		<script type="text/javascript">
+		var gotuname="";
+		function send_msg(message)
+		{
+
+			$("#container").html("<span class='bot'>ChatBot: </span>"+message);	
+		}
+
+
+
+		function get_username()
+		{
+			send_msg("Hello, What is your name?");
+		}
+
+		function ai(message)
+		{
+			if(gotuname.length<3)
+			{
+				gotuname=message;
+				send_msg("Nice to meet you "+gotuname+", how are you doing?");
+			}	
+		}
+
+
+		$(function()
+		{
+			get_username();
+			$("#textbox").keypress(function(event){
+			if(event.which==13) /*key code of enter key is 13*/
+			{
+				if($("#esend").prop("checked")) /*checking if checkbox is checked*/
+				{
+					
+
+					$("#send").click();
+					event.preventDefault();  /*if checkbox is checked then it has to send message if enter key pressed then that enter key should not create new line in the message so to prevent new line creation we do*/
+					}
+				}
+
+
+
+			});
+
+
+		$("#send").click(function()
+		{
+
+			var username="<span class='uname'>You: </span>"	
+			newmsg=$("#textbox").val()
+			$("#textbox").val("");	
+		
+
+			var prevcontent=$("#container").html();
+			/*prevcontent contains the value previously present in container just before our latest message goes into it*/
+
+
+
+			//	console.log(prevcontent.length);
+			/*
+			9 is the length of blank content present in container at the very beginning of the chat
+			*/
+
+
+			/*this below condition helps us to prevent new line being added at very first start of the chat
+			*/ 
+			if(prevcontent.length>9)
+				prevcontent+="<br>";	
+			//so if previous content length > 9, i.e it is some valueable chat msg then only add a new line after it
+
+			$("#container").html(prevcontent+username+newmsg);/*
+			above one helps us to append msgs in container one after the other thus preventing them from getting overwritten
+			*/
+
+
+			/*this below statement is used so that whenever a new message is sent by a user the scroll bar automatically scrolls so as to show up the latest messages in the container
+			*/
+			/*
+			scrollTop requires current container content's height/scrollHeight as argument*/ 
+			$("#container").scrollTop($("#container").prop("scrollHeight"));
+			ai(newmsg);
+
+		});	
+ 
+
+
+
+		});
+		
+		</script>
+
+
+
+
+
+			<div id="header">
+				<h1>Query Resolver Bot	</h1>
+
+			</div>	
+		<div id="container">		
+		
+
+		</div>
+
+		<div id="controls">		
+			<textarea id="textbox" placeholder="Enter your message here..."></textarea>
+
+			<button id="send"> Send </button>
+			<br>
+			<input checked type="checkbox" id="esend" /><!-- 
+			checked property lets checkbox to be checked by default -->
+			<label>Let me press Enter to Send message</label>	
+		</div>
+			
+
+
+
+	</body>
+
+</html>

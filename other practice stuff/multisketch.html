@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>HTML5 multi-touch</title>
+  <script type='text/javascript'>
+    var canvas;
+    var ctx;
+    var lastPt = new Object();
+    var colours = ['red', 'green', 'blue', 'yellow', 'black'];
+    var lf;
+    var type;  
+     function getOffset(obj) {
+  var offsetLeft = 0;
+  var offsetTop = 0;
+  do {
+    if (!isNaN(obj.offsetLeft)) {
+      offsetLeft += obj.offsetLeft;
+    }
+    if (!isNaN(obj.offsetTop)) {
+      offsetTop += obj.offsetTop;
+    }   
+  } while(obj = obj.offsetParent );
+  return {left: offsetLeft, top: offsetTop};
+}   
+ 
+    function init() {
+      var touchzone = document.getElementById("mycanvas");
+      touchzone.addEventListener("touchmove", draw, false);
+      touchzone.addEventListener("touchend", end, false);   
+      canvas = document.getElementById('mycanvas');
+      ctx = canvas.getContext("2d");
+      var obj=getOffset(touchzone);
+     lf=obj.left;
+     tp=obj.top;
+    }
+ 
+    function draw(e) {
+      e.preventDefault();
+ 
+      //Iterate over all touches
+      for(var i=0;i<e.touches.length;i++) {
+        var id = e.touches[i].identifier;   
+        if(lastPt[id]) {
+          ctx.beginPath();
+          ctx.moveTo(lastPt[id].x, lastPt[id].y);
+          ctx.lineTo(e.touches[i].pageX-lf, e.touches[i].pageY-tp);
+          ctx.strokeStyle = colours[id];
+          ctx.stroke();
+ 
+        }
+        // Store last point
+        lastPt[id] = {x:e.touches[i].pageX-lf, y:e.touches[i].pageY-tp};
+      }
+  }
+  
+  function end(e) {
+    e.preventDefault();
+    for(var i=0;i<e.changedTouches.length;i++) {
+      var id = e.changedTouches[i].identifier;
+      // Terminate this touch
+      delete lastPt[id];
+    }
+  }  
+  
+  </script>
+  </head>
+  <body onload="init()">
+    <canvas id="mycanvas" width="800" height="1000" style="border: 1px solid #ccc ; margin-top:200px; margin-left:120px">
+      Canvas element not supported.
+    </canvas>
+  </body>
+</html>

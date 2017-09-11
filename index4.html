@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>
+			Jquery Tuts4
+		</title>
+	
+		<script type="text/javascript" src="/media/mj/Local Disk/coded files/jqajjs/jquery-3.2.1.min.js">
+
+		//use $ or word Jquery to begin with the jquery statement
+		
+
+		</script>
+
+		<style type="text/css">
+				#textbox{
+
+					font-size : 20px;
+					color:brown;
+				}	
+				#display{
+
+						width:400px;
+						height:400px;
+						border : 5px dashed yellow;				
+			
+				}	
+				#sub
+				{
+					font-size:28px;	
+					color:green;
+				}
+
+				
+
+		</style>
+
+
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+				$(function()
+				{
+					$("#sub").click(function()    //when submit button is clicked this task gets performed
+					{
+						var txt=$("#textbox").val(); //value entered in txt field gets copied to txt variable
+						txt=txt.toUpperCase();
+						$("#display").html(txt);	// component with display id i.e div element acts as display area  and displays txt contents
+						$("#textbox").val("");  // value of txt field is set to empty
+
+
+					});
+
+
+
+
+				});
+
+						
+		</script>	
+
+		<input id="textbox" type="text" />  <!-- creates txt field -->
+		<button id="sub" > Submit</button><!-- 	creates a button
+	 -->	
+<br><br>
+<b>			Text Display		</b>
+<br><br>
+		<div id="display"></div> 		<!-- creates a display element div 
+ -->
+	
+	</body>
+
+</html>
